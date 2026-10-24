@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f7f7f5">
   <meta name="description" content="About DrkF0rest - Network Engineer & System Administrator">
   <title>About DrkF0rest</title>
@@ -19,12 +19,15 @@
 
   <header class="topbar">
     <a class="wordmark" href="#top">DRKF0REST</a>
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav" id="main-navigation" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#expertise">Expertise</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-navigation">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
   <main id="top">
@@ -49,7 +52,7 @@
           <div class="label">Current focus</div>
           <p>Network Engineering<br>System Administration</p>
           <div class="label">Working with</div>
-          <p>MikroTik / Cisco / Linux / Server Infrastructure</p>
+          <p>Ubiquiti / MikroTik / Aruba / Linux / Server Infrastructure</p>
           <div class="label">Based on</div>
           <p>Hands-on practice, troubleshooting, and systematic problem-solving.</p>
         </aside>
@@ -92,6 +95,37 @@
               <p class="achievement-title">Juara 1 FTI Fair 2023</p>
               <p class="achievement-org">Fakultas Teknik Informatika - Universitas Budiluhur</p>
             </div>
+          </div>
+        </div>
+        <div class="experience">
+          <h3 class="section-subheading">Experience</h3>
+          <div class="experience-grid">
+            <article class="experience-item">
+              <h4 class="experience-title">Film Video Editor</h4>
+              <p class="experience-meta">SMK Muhammadiyah 3 Tangerang Selatan · Freelance</p>
+              <p class="experience-meta">Jan 2024 – Apr 2024</p>
+              <p class="experience-description">Part of the Cinematiga Team; video content published on YouTube: MUHTIGA OFFICIAL.</p>
+              <p class="experience-skills">After Effects · Adobe Premiere Pro</p>
+            </article>
+            <article class="experience-item">
+              <h4 class="experience-title">IT Support Technician</h4>
+              <p class="experience-meta">SMK Muhammadiyah 3 Tangerang Selatan · Freelance</p>
+              <p class="experience-meta">Sep 2022 – Oct 2023</p>
+              <p class="experience-skills">Technical Support · Teamwork</p>
+            </article>
+            <article class="experience-item">
+              <h4 class="experience-title">Laboratory Technician</h4>
+              <p class="experience-meta">SMK Muhammadiyah 3 Tangerang Selatan · Freelance</p>
+              <p class="experience-meta">Sep 2022 – Oct 2023</p>
+              <p class="experience-skills">System Administration</p>
+            </article>
+            <article class="experience-item">
+              <h4 class="experience-title">IT Support Technician</h4>
+              <p class="experience-meta">Budi Luhur University · Internship</p>
+              <p class="experience-meta">May 2023 – Aug 2023</p>
+              <p class="experience-skills">Network Infrastructure: Ubiquiti · MikroTik · Aruba</p>
+              <p class="experience-skills">IT Hardware Support</p>
+            </article>
           </div>
         </div>
       </div>
@@ -237,7 +271,13 @@
     </div>
     <div class="chat-input-group">
       <input type="text" id="chat-input" placeholder="Ask me anything..." aria-label="Chat message">
-      <button class="chat-send" id="chat-send" aria-label="Send message">Send</button>
+      <button class="chat-send" id="chat-send" aria-label="Send message">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 2-7 20-4-9-9-4Z"></path>
+          <path d="M22 2 11 13"></path>
+        </svg>
+        <span>Send</span>
+      </button>
     </div>
   </div>
 

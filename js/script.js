@@ -3,6 +3,23 @@ const pageLoader = document.getElementById("page-loader");
     window.addEventListener("load", () => setTimeout(hideLoader, 1800), { once: true });
     setTimeout(hideLoader, 3500);
     document.getElementById("year").textContent = new Date().getFullYear();
+    const topbar = document.querySelector(".topbar");
+    const menuToggle = document.getElementById("menu-toggle");
+    const closeMenu = () => {
+      topbar.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+    };
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      topbar.classList.toggle("menu-open", !isOpen);
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+    });
+    document.querySelectorAll(".nav a").forEach((link) => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
     const revealItems = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries) => {
@@ -96,6 +113,25 @@ const pageLoader = document.getElementById("page-loader");
         
         container.appendChild(optionsDiv);
         msgDiv.appendChild(container);
+      } else if (typeof text === "object" && text.type === "skills") {
+        const container = document.createElement("div");
+        container.className = "chat-answer";
+
+        const heading = document.createElement("div");
+        heading.className = "chat-answer-title";
+        heading.textContent = text.title;
+        container.appendChild(heading);
+
+        const tags = document.createElement("div");
+        tags.className = "chat-answer-tags";
+        text.items.forEach((item) => {
+          const tag = document.createElement("span");
+          tag.className = "chat-answer-tag";
+          tag.textContent = item;
+          tags.appendChild(tag);
+        });
+        container.appendChild(tags);
+        msgDiv.appendChild(container);
       } else {
         const bubble = document.createElement("div");
         bubble.className = "chat-bubble";
@@ -124,7 +160,11 @@ const pageLoader = document.getElementById("page-loader");
             { label: "Instagram", value: "Open Instagram", url: botKnowledge.instagram }
           ]
         },
-        skills: `My core expertise includes: ${botKnowledge.skills.slice(0, 4).join(", ")}, and more. Please check the Expertise section for complete details.`,
+        skills: {
+          type: "skills",
+          title: "Core skills",
+          items: botKnowledge.skills
+        },
         projects: {
           type: "options",
           message: "Here are my projects. Select one to learn more or visit the page:",
@@ -154,7 +194,11 @@ const pageLoader = document.getElementById("page-loader");
             { label: "Instagram", value: "Buka Instagram", url: botKnowledge.instagram }
           ]
         },
-        skills: `Keahlian inti saya meliputi: ${botKnowledge.skills.slice(0, 4).join(", ")}, dan masih banyak lagi. Silakan periksa bagian Expertise untuk detail lengkap.`,
+        skills: {
+          type: "skills",
+          title: "Keahlian utama",
+          items: botKnowledge.skills
+        },
         projects: {
           type: "options",
           message: "Berikut adalah proyek saya. Pilih salah satu untuk info lebih lanjut:",
