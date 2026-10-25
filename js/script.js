@@ -1,6 +1,6 @@
 const pageLoader = document.getElementById("page-loader");
     const hideLoader = () => pageLoader.classList.add("hidden");
-    window.addEventListener("load", hideLoader, { once: true });
+    window.addEventListener("load", () => setTimeout(hideLoader, 1800), { once: true });
     setTimeout(hideLoader, 3500);
     document.getElementById("year").textContent = new Date().getFullYear();
     const topbar = document.querySelector(".topbar");
